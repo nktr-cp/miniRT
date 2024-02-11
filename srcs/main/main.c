@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:27 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/02/11 23:40:12 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	main(void)
 {
-	parse_scene("scene.rt");
+	t_objlist	*head;
+
+	head = NULL;
+	parse_scene("scene.rt", &head);
 	return (0);
 }

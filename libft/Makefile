@@ -6,7 +6,7 @@
 #    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/20 17:19:47 by misargsy          #+#    #+#              #
-#    Updated: 2023/12/21 15:44:56 by misargsy         ###   ########.fr        #
+#    Updated: 2024/02/11 23:05:27 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ LIBFT =		ft_isalpha.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c \
+			xmalloc.c
 
 GNL = 		get_next_line_utils.c \
 			get_next_line.c

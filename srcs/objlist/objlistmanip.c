@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xmalloc.c                                          :+:      :+:    :+:   */
+/*   objlistmanip.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 21:25:39 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:06:08 by misargsy         ###   ########.fr       */
+/*   Created: 2024/02/11 20:51:56 by misargsy          #+#    #+#             */
+/*   Updated: 2024/02/11 23:37:03 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "typedefs.h"
 #include "libft.h"
 
-void	*xmalloc(size_t size)
+static t_objlist	*objlist_new(void *obj)
 {
-	void	*ptr;
+	t_objlist	*new;
 
-	ptr = malloc(size);
-	if (ptr == NULL)
+	new = xmalloc(sizeof(t_objlist));
+	new->obj = obj;
+	new->next = NULL;
+	return (new);
+}
+
+void	objlist_add(t_objlist **list, void *obj)
+{
+	t_objlist	*new;
+	t_objlist	*tmp;
+
+	new = objlist_new(obj);
+	if (*list == NULL)
 	{
-		ft_dprintf(2, XMALLOC_MESSAGE);
-		exit(EXIT_FAILURE);
+		*list = new;
+		return ;
 	}
-	return (ptr);
+	tmp = *list;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }

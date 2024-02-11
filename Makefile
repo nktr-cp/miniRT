@@ -6,11 +6,11 @@
 #    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/02/11 13:17:08 by misargsy         ###   ########.fr        #
+#    Updated: 2024/02/11 23:35:06 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
@@ -34,14 +34,21 @@ SRCSDIR = srcs
 OBJSDIR = objs
 
 ##############################################################################
-MAIN =	main.c
-MAIN := $(addprefix main/, $(MAIN))
+MAIN =		main.c
+MAIN :=		$(addprefix main/, $(MAIN))
 
-PARSE =	parse.c
-PARSE := $(addprefix parse/, $(PARSE))
+OBJLIST =	objlistmanip.c
+OBJLIST :=	$(addprefix objlist/, $(OBJLIST))
+
+PARSE =		parse.c \
+			parse_util.c
+PARSE :=	$(addprefix parse/, $(PARSE))
+
+UTILS =		exit.c
+UTILS :=	$(addprefix utils/, $(UTILS))
 ##############################################################################
 
-SRCS =	$(MAIN) $(PARSE)
+SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(UTILS)
 SRCS :=	$(addprefix $(SRCSDIR)/, $(SRCS))
 OBJS =	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 
@@ -49,7 +56,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@printf "$(YELLOW)Compiling $@... $(CONVERSION)$(RESET)"
-	@$(CC) $(FLAGS) $(MLXF) $(OBJS) -o $(NAME) $(LIBFT)
+	@$(CC) $(CFLAGS) $(MLXF) $(OBJS) -o $(NAME) $(LIBFT)
 	@printf "$(GREEN)⪼ $(NAME): compilation done ⪻$(CONVERSION)$(RESET)\n"
 
 $(LIBFT):
@@ -63,7 +70,7 @@ $(MLX):
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 	@mkdir -p $(OBJSDIR) $(dir $@)
 	@printf "$(MAGENTA)Compiling $@... $(CONVERSION)$(RESET)"
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(RM) -r $(OBJSDIR)

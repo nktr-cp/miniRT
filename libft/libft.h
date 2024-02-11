@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 00:53:33 by misargsy          #+#    #+#             */
-/*   Updated: 2023/12/21 15:29:47 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/02/11 23:06:15 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+
+# define XMALLOC_MESSAGE "malloc failed\n"
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(const int fd, const char *format, ...);
@@ -55,5 +57,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	*xmalloc(size_t size);
 
 #endif
