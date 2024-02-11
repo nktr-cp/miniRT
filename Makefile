@@ -6,11 +6,11 @@
 #    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/02/09 19:28:54 by misargsy         ###   ########.fr        #
+#    Updated: 2024/02/11 13:17:08 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -Wall -Wextra -Werror -I libft -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
@@ -30,12 +30,20 @@ RESET		= \033[0m
 MAX			= 50
 CONVERSION	= %-$(MAX).$(MAX)s\r
 
-FILES =	main.c \
-
 SRCSDIR = srcs
 OBJSDIR = objs
-SRCS = $(patsubst %.c, $(SRCSDIR)/%.c, $(FILES))
-OBJS = $(patsubst %.c, $(OBJSDIR)/%.o, $(FILES))
+
+##############################################################################
+MAIN =	main.c
+MAIN := $(addprefix main/, $(MAIN))
+
+PARSE =	parse.c
+PARSE := $(addprefix parse/, $(PARSE))
+##############################################################################
+
+SRCS =	$(MAIN) $(PARSE)
+SRCS :=	$(addprefix $(SRCSDIR)/, $(SRCS))
+OBJS =	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 
 all: $(NAME)
 
@@ -53,7 +61,7 @@ $(MLX):
 	@cp $(MLXDIR)/$(MLX) .
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
-	@mkdir -p $(OBJSDIR)
+	@mkdir -p $(OBJSDIR) $(dir $@)
 	@printf "$(MAGENTA)Compiling $@... $(CONVERSION)$(RESET)"
 	@$(CC) $(FLAGS) -c $< -o $@
 

@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 19:12:11 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/09 19:25:22 by misargsy         ###   ########.fr       */
+/*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
+/*   Updated: 2024/02/11 12:54:27 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parse.h"
 
 int	main(void)
 {
-	ft_dprintf(2, "Hello miniRT\n");
+	parse_scene("scene.rt");
 	return (0);
 }
