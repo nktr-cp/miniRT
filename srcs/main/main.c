@@ -12,11 +12,13 @@
 
 #include "parse.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_objlist	*head;
 
+	if (argc != 2)
+		return (minirt_exit("Invalid arguments"), EXIT_FAILURE);
 	head = NULL;
-	parse_scene("scene.rt", &head);
+	parse_scene(argv[1], &head);
 	return (0);
 }
