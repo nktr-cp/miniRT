@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 18:23:45 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 21:55:24 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 int	main(int argc, char **argv)
 {
-	t_objlist	*head;
+	t_scene	scene;
 
 	if (argc != 2)
 		minirt_exit("Invalid arguments", EXIT_FAILURE);
-	head = NULL;
-	parse_scene(argv[1], &head);
-	objlist_clear(&head);
+	ft_bzero(&scene, sizeof(t_scene));
+	parse_scene(argv[1], &scene);
+	objlist_clear(&scene.objects);
 	minirt_exit(NULL, EXIT_SUCCESS);
 }
 

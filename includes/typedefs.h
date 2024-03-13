@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 17:14:33 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 21:15:38 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_objlist
 typedef struct s_scene
 {
 	t_camera	camera;
-	double		ambient;
+	t_amblight	amblight;
 	t_objlist	*objects;
 }	t_scene;
 

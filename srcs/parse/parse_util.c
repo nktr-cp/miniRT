@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 21:47:59 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:24:05 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 21:51:36 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,31 @@ size_t	arrlen(char **arr)
 	while (arr[len] != NULL)
 		len++;
 	return (len);
+}
+
+void	checkbadinput(bool last, char *type)
+{
+	static bool	camera = false;
+	static bool	amblight = false;
+
+	if (last)
+	{
+		if (!camera)
+			minirt_exit("No camera line", EXIT_FAILURE);
+	}
+	else
+	{
+		if (ft_strcmp(type, "C") == 0)
+		{
+			if (camera)
+				minirt_exit("Too many camera lines", EXIT_FAILURE);
+			camera = true;
+		}
+		else if (ft_strcmp(type, "A") == 0)
+		{
+			if (amblight)
+				minirt_exit("Too many ambient light lines", EXIT_FAILURE);
+			amblight = true;
+		}
+	}
 }

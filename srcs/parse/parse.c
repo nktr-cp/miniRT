@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 18:23:25 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 21:52:33 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,25 +90,20 @@ static void	parse_cylinder(char **split, t_objlist **head)
 	objlist_add(head, cylinder);
 }
 
-static void	parse_line(char *line, t_objlist **head)
+static void	parse_line(char **split, t_scene *scene)
 {
-	char	**split;
-
-	split = ft_split(line, ' ');
-	if (split == NULL)
-		minirt_exit("malloc failed", EXIT_FAILURE);
 	if (ft_strcmp(split[0], "sp") == 0)
-		parse_sphere(split, head);
+		parse_sphere(split, &scene->objects);
 	else if (ft_strcmp(split[0], "pl") == 0)
-		parse_plane(split, head);
+		parse_plane(split, &scene->objects);
 	else if (ft_strcmp(split[0], "cy") == 0)
-		parse_cylinder(split, head);
+		parse_cylinder(split, &scene->objects);
 	else if (ft_strcmp(split[0], "A") == 0)
-		parse_amblight(split, head);
+		parse_amblight(split, &scene->amblight);
 	else if (ft_strcmp(split[0], "C") == 0)
-		parse_camera(split, head);
+		parse_camera(split, &scene->camera);
 	else if (ft_strcmp(split[0], "L") == 0)
-		parse_light(split, head);
+		parse_light(split, &scene->objects);
 	else
 	{
 		free_split(split);
@@ -117,10 +112,11 @@ static void	parse_line(char *line, t_objlist **head)
 	free_split(split);
 }
 
-void	parse_scene(const char *filename, t_objlist **head)
+void	parse_scene(const char *filename, t_scene *scene)
 {
 	int		fd;
 	char	*line;
+	char	**split;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -130,8 +126,13 @@ void	parse_scene(const char *filename, t_objlist **head)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		parse_line(line, head);
+		split = ft_split(line, ' ');
+		checkbadinput(false, split[0]);
+		if (split == NULL)
+			minirt_exit("malloc failed", EXIT_FAILURE);
+		parse_line(split, scene);
 		free(line);
 	}
+	checkbadinput(true, NULL);
 	close(fd);
 }
