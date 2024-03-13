@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   norm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:40:12 by misargsy         ###   ########.fr       */
+/*   Created: 2024/03/13 15:53:08 by knishiok          #+#    #+#             */
+/*   Updated: 2024/03/13 16:24:37 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "utils.h"
+#include "vector.h"
 
-int	main(int argc, char **argv)
+double	norm(const t_vector v)
 {
-	t_objlist	*head;
-
-	if (argc != 2)
-		minirt_exit("Invalid arguments", EXIT_FAILURE);
-	head = NULL;
-	parse_scene(argv[1], &head);
-	return (0);
+	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }

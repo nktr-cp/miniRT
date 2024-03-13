@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cross.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:40:12 by misargsy         ###   ########.fr       */
+/*   Created: 2024/03/13 16:12:46 by knishiok          #+#    #+#             */
+/*   Updated: 2024/03/13 16:21:58 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "utils.h"
+#include "vector.h"
 
-int	main(int argc, char **argv)
+t_vector	cross(const t_vector v1, const t_vector v2)
 {
-	t_objlist	*head;
+	t_vector	res;
 
-	if (argc != 2)
-		minirt_exit("Invalid arguments", EXIT_FAILURE);
-	head = NULL;
-	parse_scene(argv[1], &head);
-	return (0);
+	res.x = v1.y * v2.z - v1.z * v2.y;
+	res.y = v1.z * v2.x - v1.x * v2.z;
+	res.z = v1.x * v2.y - v1.y * v2.x;
+	return (res);
 }

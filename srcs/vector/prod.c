@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   prod.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:40:12 by misargsy         ###   ########.fr       */
+/*   Created: 2024/03/13 16:17:28 by knishiok          #+#    #+#             */
+/*   Updated: 2024/03/13 16:22:09 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "utils.h"
+#include "vector.h"
 
-int	main(int argc, char **argv)
+double	prod(const t_vector v1, const t_vector v2)
 {
-	t_objlist	*head;
-
-	if (argc != 2)
-		minirt_exit("Invalid arguments", EXIT_FAILURE);
-	head = NULL;
-	parse_scene(argv[1], &head);
-	return (0);
+	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
