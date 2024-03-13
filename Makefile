@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
+#    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/02/11 23:35:06 by misargsy         ###   ########.fr        #
+#    Updated: 2024/03/13 16:24:04 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,18 @@ PARSE =		parse.c \
 			parse_util.c
 PARSE :=	$(addprefix parse/, $(PARSE))
 
+VECTOR =	basic_ops.c \
+			cross.c \
+			prod.c \
+			norm.c
+
+VECTOR :=	$(addprefix vector/, $(VECTOR))
+
 UTILS =		exit.c
 UTILS :=	$(addprefix utils/, $(UTILS))
 ##############################################################################
 
-SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(UTILS)
+SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(VECTOR) $(UTILS)
 SRCS :=	$(addprefix $(SRCSDIR)/, $(SRCS))
 OBJS =	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 
