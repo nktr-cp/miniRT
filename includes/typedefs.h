@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:36:17 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:14:33 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ typedef struct s_light
 	t_color		color;
 	double		brightness;
 }	t_light;
+
+typedef struct s_amblight
+{
+	t_color	color;
+	double	ratio;
+}	t_amblight;
 
 typedef enum e_objtype
 {

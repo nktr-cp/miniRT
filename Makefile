@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
+#    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/13 16:24:04 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/13 18:23:48 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,17 +41,18 @@ OBJLIST =	objlistmanip.c
 OBJLIST :=	$(addprefix objlist/, $(OBJLIST))
 
 PARSE =		parse.c \
-			parse_util.c
+			parse_util.c \
+			parse_env.c
 PARSE :=	$(addprefix parse/, $(PARSE))
 
 VECTOR =	basic_ops.c \
 			cross.c \
 			prod.c \
 			norm.c
-
 VECTOR :=	$(addprefix vector/, $(VECTOR))
 
-UTILS =		exit.c
+UTILS =		exit.c \
+			free.c
 UTILS :=	$(addprefix utils/, $(UTILS))
 ##############################################################################
 

@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:40:12 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:23:45 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,12 @@ int	main(int argc, char **argv)
 		minirt_exit("Invalid arguments", EXIT_FAILURE);
 	head = NULL;
 	parse_scene(argv[1], &head);
-	return (0);
+	objlist_clear(&head);
+	minirt_exit(NULL, EXIT_SUCCESS);
 }
+
+// __attribute__((destructor))
+// static void	leaks(void)
+// {
+// 	system("leaks -q miniRT");
+// }
