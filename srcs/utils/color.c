@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   norm.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 15:53:08 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/13 21:27:27 by knishiok         ###   ########.fr       */
+/*   Created: 2024/03/13 21:14:51 by knishiok          #+#    #+#             */
+/*   Updated: 2024/03/13 21:16:57 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "utils.h"
 
-double	norm(const t_vector v)
+int	color_to_int(t_color color)
 {
-	return (pow(v.x * v.x + v.y * v.y + v.z * v.z, 0.5));
+	return (color.r << 16 | color.g << 8 | color.b);
 }
