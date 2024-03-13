@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:51:56 by misargsy          #+#    #+#             */
-/*   Updated: 2024/02/11 23:37:03 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:00:45 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ void	objlist_add(t_objlist **list, void *obj)
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = new;
+}
+
+void	objlist_clear(t_objlist **list)
+{
+	t_objlist	*tmp;
+
+	while (*list != NULL)
+	{
+		tmp = *list;
+		*list = (*list)->next;
+		free(tmp->obj);
+		free(tmp);
+	}
 }

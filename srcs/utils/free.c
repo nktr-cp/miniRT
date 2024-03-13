@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objlist.h                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 20:56:41 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 17:55:17 by misargsy         ###   ########.fr       */
+/*   Created: 2024/03/13 17:53:28 by misargsy          #+#    #+#             */
+/*   Updated: 2024/03/13 18:10:59 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OBJLIST_H
-# define OBJLIST_H
+#include "utils.h"
 
-# include "typedefs.h"
-# include "libft.h"
+void	free_split(char **split)
+{
+	int	i;
 
-typedef struct s_objlist	t_objlist;
-
-void	objlist_add(t_objlist **list, void *obj);
-void	objlist_clear(t_objlist **list);
-
-#endif
+	i = 0;
+	while (split[i] != NULL)
+		free(split[i++]);
+	free(split);
+}
