@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/14 19:20:31 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:37:07 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include "vector.h"
 
 
-double	intersect_sphere(t_ray ray, t_sphere *sphere);
-double	intersect_cylinder(t_ray ray, t_cylinder *cylinder);
-double	intersect_plane(t_ray ray, t_plane *plane);
+t_intersection	intersect_sphere(t_ray ray, t_sphere *sphere);
+t_intersection	intersect_cylinder(t_ray ray, t_cylinder *cylinder);
+t_intersection	intersect_plane(t_ray ray, t_plane *plane);
 
 t_img	struct_img(t_scene *scene);
 

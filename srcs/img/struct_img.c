@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/14 19:31:34 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:41:38 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,50 +34,42 @@ t_ray	generate_ray(t_scene *scene, const int x, const int y)
 	return (res);
 }
 
-void	*judge_intersect(t_ray ray, double *dist, void **res, t_objlist *lst)
+void	judge_intersect(t_ray ray, t_intersection *mx, t_objlist *lst)
 {
-	if (lst->type == SPHERE && *dist < intersect_sphere(ray, lst->obj))
-	{
-		*dist = intersect_sphere(ray, lst->obj);
-		*res = lst->obj;
-	}
-	else if (lst->type == CYLINDER && *dist < intersect_cylinder(ray, lst->obj))
-	{
-		*dist = intersect_cylinder(ray, lst->obj);
-		*res = lst->obj;
-	}
-	else if (lst->type == PLANE && *dist < intersect_plane(ray, lst->obj))
-	{
-		*dist = intersect_plane(ray, lst->obj);
-		*res = lst->obj;
-	}
+	if (lst->type == SPHERE && mx->dist < intersect_sphere(ray, lst->obj).dist)
+		*mx = intersect_sphere(ray, lst->obj);
+	else if (lst->type == CYLINDER && mx->dist < intersect_cylinder(ray, lst->obj).dist)
+		*mx = intersect_cylinder(ray, lst->obj);
+	else if (lst->type == PLANE && mx->dist < intersect_plane(ray, lst->obj).dist)
+		*mx = intersect_plane(ray, lst->obj);
 }
 
-void	*find_nearest_object(t_ray ray, t_scene *scene)
+t_intersection	*find_nearest_object(t_ray ray, t_scene *scene)
 {
-	t_objlist	*lst;
-	double		dist;
-	void		*res;
+	t_objlist		*lst;
+	t_intersection	mx;
 
 	lst = scene->objects;
-	dist = INF;
-	res = NULL;
+	mx.dist = INF;
 	while (lst)
 	{
-		judge_intersect(ray, &dist, &res, lst);
+		judge_intersect(ray, &mx, lst);
 		lst = lst->next;
 	}
-	return (res);
+	if (mx.dist == INF)
+		return (NULL);
+	else
+		return (&mx);
 }
 
 t_img	struct_img(t_scene *scene)
 {
-	int		i;
-	int		j;
-	t_img	img;
-	t_ray	ray;
-	void	*obj;
-	t_color	color;
+	int				i;
+	int				j;
+	t_img			img;
+	t_ray			ray;
+	t_intersection	*obj;
+	t_color			color;
 
 	i = -1;
 	while (++i < HEIGHT)

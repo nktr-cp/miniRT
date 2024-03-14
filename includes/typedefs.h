@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 19:19:14 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 22:38:07 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define HEIGHT 960
 
 # define INF 1e15
+# define EPS 1e-6
 
 typedef struct s_vector
 {
@@ -132,5 +133,14 @@ typedef struct s_data
 	t_img	img;
 	t_scene	scene;
 }	t_data;
+
+typedef struct s_intersection
+{
+	t_vector	coord;
+	t_vector	normal;
+	t_objtype	type;
+	void		*objptr;
+	double		dist;
+}	t_intersection;
 
 #endif
