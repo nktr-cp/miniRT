@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 19:20:49 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:35:50 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&scene, sizeof(t_scene));
 	parse_scene(argv[1], &scene);
 	check(scene);
-	img = struct_img(scene);
+	img = struct_img(&scene);
 	objlist_clear(&scene.objects);
 	minirt_exit(NULL, EXIT_SUCCESS);
 }
