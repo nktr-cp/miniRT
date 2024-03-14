@@ -6,12 +6,13 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 18:52:52 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:20:49 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "utils.h"
+#include "img.h"
 
 #include <stdio.h>
 static void	print_objlist(t_objlist *list)

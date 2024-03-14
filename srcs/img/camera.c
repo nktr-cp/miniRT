@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:25:06 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/14 18:47:41 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:57:45 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@ void	init_camera(t_camera *camera)
 	camera->ex = normalize(camera->ex);
 	// camera->ey = normalize(cross(camera->to_center, camera->ex));
 	camera->ey = normalize(cross(camera->ex, camera->to_center));
+
+	// TODO
+	// edge case?
 }

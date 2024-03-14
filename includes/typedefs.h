@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 18:37:36 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:19:14 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # define WIDTH 720
 # define HEIGHT 960
+
+# define INF 1e15
 
 typedef struct s_vector
 {
