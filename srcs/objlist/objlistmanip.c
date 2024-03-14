@@ -6,29 +6,30 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:51:56 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 18:00:45 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/13 22:38:39 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "typedefs.h"
 #include "libft.h"
 
-static t_objlist	*objlist_new(void *obj)
+static t_objlist	*objlist_new(void *obj, t_objtype type)
 {
 	t_objlist	*new;
 
 	new = xmalloc(sizeof(t_objlist));
 	new->obj = obj;
+	new->type = type;
 	new->next = NULL;
 	return (new);
 }
 
-void	objlist_add(t_objlist **list, void *obj)
+void	objlist_add(t_objlist **list, void *obj, t_objtype type)
 {
 	t_objlist	*new;
 	t_objlist	*tmp;
 
-	new = objlist_new(obj);
+	new = objlist_new(obj, type);
 	if (*list == NULL)
 	{
 		*list = new;

@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 21:52:33 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:24:14 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static void	parse_sphere(char **split, t_objlist **head)
 	i = 0;
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
-	sphere->color.g = ft_atoi(split[3] + i + 1);
+	sphere->color.g = ft_atoi(split[3] + ++i);
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
-	sphere->color.b = ft_atoi(split[3] + i + 1);
-	objlist_add(head, sphere);
+	sphere->color.b = ft_atoi(split[3] + ++i);
+	objlist_add(head, sphere, SPHERE);
 }
 
 static void	parse_plane(char **split, t_objlist **head)
@@ -55,11 +55,11 @@ static void	parse_plane(char **split, t_objlist **head)
 	i = 0;
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
-	plane->color.g = ft_atoi(split[3] + i + 1);
+	plane->color.g = ft_atoi(split[3] + ++i);
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
-	plane->color.b = ft_atoi(split[3] + i + 1);
-	objlist_add(head, plane);
+	plane->color.b = ft_atoi(split[3] + ++i);
+	objlist_add(head, plane, PLANE);
 }
 
 static void	parse_cylinder(char **split, t_objlist **head)
@@ -83,11 +83,11 @@ static void	parse_cylinder(char **split, t_objlist **head)
 	i = 0;
 	while (ft_isdigit(split[5][i]) == 1)
 		i++;
-	cylinder->color.g = ft_atoi(split[5] + i + 1);
+	cylinder->color.g = ft_atoi(split[5] + ++i);
 	while (ft_isdigit(split[5][i]) == 1)
 		i++;
-	cylinder->color.b = ft_atoi(split[5] + i + 1);
-	objlist_add(head, cylinder);
+	cylinder->color.b = ft_atoi(split[5] + ++i);
+	objlist_add(head, cylinder, CYLINDER);
 }
 
 static void	parse_line(char **split, t_scene *scene)

@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:03:44 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 21:54:59 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:24:26 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	parse_amblight(char **split, t_amblight *amblight)
 	i = 0;
 	while (ft_isdigit(split[2][i]) == 1)
 		i++;
-	amblight->color.g = ft_atoi(split[2] + i + 1);
+	amblight->color.g = ft_atoi(split[2] + ++i);
 	while (ft_isdigit(split[2][i]) == 1)
 		i++;
-	amblight->color.b = ft_atoi(split[2] + i + 1);
+	amblight->color.b = ft_atoi(split[2] + ++i);
 }
 
 void	parse_camera(char **split, t_camera *camera)
@@ -63,9 +63,9 @@ void	parse_light(char **split, t_objlist **head)
 	i = 0;
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
-	light->color.g = ft_atoi(split[3] + i + 1);
+	light->color.g = ft_atoi(split[3] + ++i);
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
-	light->color.b = ft_atoi(split[3] + i + 1);
-	objlist_add(head, light);
+	light->color.b = ft_atoi(split[3] + ++i);
+	objlist_add(head, light, LIGHT);
 }
