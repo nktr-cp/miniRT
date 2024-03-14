@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 17:35:59 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:52:52 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,14 @@ static void	check(t_scene scene)
 int	main(int argc, char **argv)
 {
 	t_scene	scene;
+	t_img	img;
 
 	if (argc != 2)
 		minirt_exit("Invalid arguments", EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
 	parse_scene(argv[1], &scene);
 	check(scene);
+	img = struct_img(scene);
 	objlist_clear(&scene.objects);
 	minirt_exit(NULL, EXIT_SUCCESS);
 }

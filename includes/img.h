@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalize.c                                        :+:      :+:    :+:   */
+/*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 21:25:33 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/13 21:34:51 by knishiok         ###   ########.fr       */
+/*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
+/*   Updated: 2024/03/14 18:35:28 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#ifndef IMG_H
+# define IMG_H
 
-t_vector	normalize(t_vector v)
-{
-	t_vector	res;
-	double		siz;
+# include <math.h>
+# include "typedefs.h"
+# include "utils.h"
+# include "vector.h"
 
-	siz = norm(v);
-	if (siz == 0)
-		return (v);
-	res.x = v.x / siz;
-	res.y = v.y / siz;
-	res.z = v.z / siz;
-	return (res);
-}
+#endif // IMG_H

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
+#    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/13 21:55:27 by misargsy         ###   ########.fr        #
+#    Updated: 2024/03/13 22:06:31 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,18 +45,23 @@ PARSE =		parse.c \
 			parse_env.c
 PARSE :=	$(addprefix parse/, $(PARSE))
 
+IMG	=		struct_img.c
+IMG :=		$(addprefix img/, $(IMG))
+
 VECTOR =	basic_ops.c \
 			cross.c \
 			prod.c \
-			norm.c
+			norm.c \
+			normalize.c
 VECTOR :=	$(addprefix vector/, $(VECTOR))
 
 UTILS =		exit.c \
-			free.c
+			free.c \
+			color.c
 UTILS :=	$(addprefix utils/, $(UTILS))
 ##############################################################################
 
-SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(VECTOR) $(UTILS)
+SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(IMG) $(VECTOR) $(UTILS)
 SRCS :=	$(addprefix $(SRCSDIR)/, $(SRCS))
 OBJS =	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 

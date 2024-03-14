@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 21:15:38 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:37:36 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define TYPEDEFS_H
 
 # include "objlist.h"
+
+# define WIDTH 720
+# define HEIGHT 960
 
 typedef struct s_vector
 {
@@ -62,6 +65,11 @@ typedef struct s_camera
 {
 	t_vector	origin;
 	t_vector	direction;
+	// スクリーンの中心へのベクトル
+	t_vector	to_center;
+	// スクリーン座標の基底をワールド座標に変換したもの
+	t_vector	ex;
+	t_vector	ey;
 	double		fov;
 }	t_camera;
 
@@ -108,6 +116,7 @@ typedef struct s_mlx
 
 typedef struct s_img
 {
+	// HEIGHT x WIDTHのint型の配列にキャストして使う
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
