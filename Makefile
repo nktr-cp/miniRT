@@ -6,11 +6,11 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/13 22:06:31 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/15 20:54:17 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I libft -I includes #-fsanitize=address
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
@@ -42,10 +42,13 @@ OBJLIST :=	$(addprefix objlist/, $(OBJLIST))
 
 PARSE =		parse.c \
 			parse_util.c \
-			parse_env.c
+			parse_env.c \
+			range_check.c
 PARSE :=	$(addprefix parse/, $(PARSE))
 
-IMG	=		struct_img.c
+IMG	=		struct_img.c \
+			intersection.c \
+			camera.c
 IMG :=		$(addprefix img/, $(IMG))
 
 VECTOR =	basic_ops.c \
@@ -69,7 +72,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@printf "$(YELLOW)Compiling $@... $(CONVERSION)$(RESET)"
-	@$(CC) $(CFLAGS) $(MLXF) $(OBJS) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(MLXF) $(OBJS) -o $(NAME) $(LIBFT) $(MLX)
 	@printf "$(GREEN)⪼ $(NAME): compilation done ⪻$(CONVERSION)$(RESET)\n"
 
 $(LIBFT):

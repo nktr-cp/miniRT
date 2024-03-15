@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 22:38:07 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:38:34 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define TYPEDEFS_H
 
 # include "objlist.h"
+
+# include <stdbool.h>
 
 # define WIDTH 720
 # define HEIGHT 960
@@ -119,7 +121,8 @@ typedef struct s_mlx
 
 typedef struct s_img
 {
-	// HEIGHT x WIDTHのint型の配列にキャストして使う
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

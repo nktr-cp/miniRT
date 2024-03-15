@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 23:01:04 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 20:39:53 by knishiok         ###   ########.fr       */
+/*   Created: 2024/03/15 18:16:25 by knishiok          #+#    #+#             */
+/*   Updated: 2024/03/15 18:17:12 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
 
-# include "typedefs.h"
-# include "libft.h"
-
-void	free_split(char **split);
-void	minirt_exit(const char	*message, const int status);
-int		color_to_int(t_color color);
-t_color	color_product(t_color c1, t_color c2);
-t_color	color_sum(t_color c1, t_color c2);
-t_color	color_scalar(t_color c, double scalar);
-
-#endif
+double	ft_abs(double d)
+{
+	if (d >= 0)
+		return (d);
+	return (-d);
+}

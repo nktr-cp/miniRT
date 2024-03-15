@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 17:24:14 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:09:03 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,6 @@ void	parse_scene(const char *filename, t_scene *scene)
 		free(line);
 	}
 	checkbadinput(true, NULL);
+	range_check(*scene);
 	close(fd);
 }

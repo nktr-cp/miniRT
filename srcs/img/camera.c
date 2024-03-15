@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:25:06 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/14 18:57:45 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:43:54 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ void	init_camera(t_camera *camera)
 {
 	double	dist;
 
+	if (fabs(camera->origin.x) < EPS && fabs(camera->origin.y) > EPS && fabs(camera->origin.z) < EPS)
+	{
+		if (camera->origin.y > 0)
+		{
+			camera->ex = make_vector(-1, 0, 0);
+			camera->ey = make_vector(0, 0, 1);
+		}
+		else
+		{
+			camera->ex = make_vector(1, 0, 0);
+			camera->ey = make_vector(0, 0, -1);
+		}
+		return ;
+	}
 	dist = WIDTH / (2.0 * tan(deg_to_rad(camera->fov) * 0.5));
 	camera->to_center = vector_mult(camera->direction,dist);
 	camera->ex.x = camera->to_center.z / sqrt(camera->to_center.x * camera->to_center.x + camera->to_center.z * camera->to_center.z);
@@ -30,7 +44,4 @@ void	init_camera(t_camera *camera)
 	camera->ex = normalize(camera->ex);
 	// camera->ey = normalize(cross(camera->to_center, camera->ex));
 	camera->ey = normalize(cross(camera->ex, camera->to_center));
-
-	// TODO
-	// edge case?
 }

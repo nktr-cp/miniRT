@@ -6,14 +6,16 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 19:35:50 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:50:01 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "utils.h"
 #include "img.h"
+#include "mlx.h"
 
+//DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START
 #include <stdio.h>
 static void	print_objlist(t_objlist *list)
 {
@@ -77,7 +79,6 @@ static void	print_camera(t_camera camera)
 		camera.origin.x, camera.origin.y, camera.origin.z,
 		camera.direction.x, camera.direction.y, camera.direction.z,
 		camera.fov);
-
 }
 
 static void	check(t_scene scene)
@@ -85,6 +86,19 @@ static void	check(t_scene scene)
 	print_camera(scene.camera);
 	print_amblight(scene.amblight);
 	print_objlist(scene.objects);
+}
+//DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END
+
+static void	minirt_cleanup(t_scene *scene)
+{
+	objlist_clear(&scene->objects);
+}
+
+static int	minirt_close(t_scene *scene)
+{
+	minirt_cleanup(scene);
+	minirt_exit(NULL, EXIT_SUCCESS);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -96,14 +110,17 @@ int	main(int argc, char **argv)
 		minirt_exit("Invalid arguments", EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
 	parse_scene(argv[1], &scene);
-	check(scene);
+	check(scene);//debug
 	img = struct_img(&scene);
-	objlist_clear(&scene.objects);
-	minirt_exit(NULL, EXIT_SUCCESS);
+	img.mlx = mlx_init();
+	img.win = mlx_new_window(img.mlx, WIDTH, HEIGHT, "miniRT");
+	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
+	mlx_hook(img.win, 17, 0, minirt_close, &scene);
+	minirt_close(&scene);
 }
 
-// __attribute__((destructor))
-// static void	leaks(void)
-// {
-// 	system("leaks -q miniRT");
-// }
+__attribute__((destructor))
+static void	leaks(void)
+{
+	system("leaks -q miniRT");
+}
