@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:10:09 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 22:40:12 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:48:16 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_intersection	intersect_sphere(t_ray ray, t_sphere *sphere)
 	double			d;
 	double			k[2];
 	double			t;
-	t_vector		vect;
+	// t_vector		vect;
 	t_intersection	res;
 
 	res.dist = INF;
