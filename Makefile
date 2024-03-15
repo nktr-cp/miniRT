@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
+#    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/15 20:54:17 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/15 20:58:32 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -I libft -I includes #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
 LIBFTDIR = libft
 LIBFT = libft.a
 MLXDIR = minilibx
-MLX = libmlx.a
+MLX = libmlx.dylib
 
 GRAY		= \033[1;37m
 CYAN		= \033[1;36m

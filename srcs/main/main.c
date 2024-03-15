@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 20:50:01 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:58:42 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ int	main(int argc, char **argv)
 	minirt_close(&scene);
 }
 
-__attribute__((destructor))
-static void	leaks(void)
-{
-	system("leaks -q miniRT");
-}
+// __attribute__((destructor))
+// static void	leaks(void)
+// {
+// 	system("leaks -q miniRT");
+// }
