@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:10:09 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 20:43:11 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:40:12 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,19 @@ t_intersection	intersect_sphere(t_ray ray, t_sphere *sphere)
 	double			d;
 	double			k[2];
 	double			t;
+	t_vector		vect;
 	t_intersection	res;
 
 	res.dist = INF;
 	// a = 1;
 	a = prod(ray.direction, ray.direction);
 	b = 2 * prod(vector_sub(sphere->center, ray.origin), ray.direction);
-	c = pow(norm(vector_sub(sphere->center, ray.origin)), 2.0) - sphere->diameter * sphere->diameter;
-	d = pow(b,2) - 4 * a * c;
+	c = pow(norm(vector_sub(sphere->center, ray.origin)), 2.0) - pow(sphere->diameter, 2.0);
+	d = pow(b,2.0) - 4.0 * a * c;
 	if (d < 0)
 		return (res);
+	k[0] = (-b + pow(d, 0.5)) * 0.5 / a;
+	k[1] = (-b - pow(d, 0.5)) * 0.5 / a;
 	if (k[0] < 0 && k[1] < 0)
 		return (res);
 	else if (k[0] > 0 && k[1] > 0)
@@ -38,6 +41,7 @@ t_intersection	intersect_sphere(t_ray ray, t_sphere *sphere)
 		t = k[0];                                                                                                                         
 	else
 		t = k[1];
+	// printf("%f\n", t);
 	res.coord = vector_add(ray.origin, vector_mult(ray.direction, t));
 	res.dist = t;
 	res.normal = normalize(vector_sub(res.coord, sphere->center));

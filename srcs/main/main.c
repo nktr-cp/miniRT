@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 20:58:42 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:52:28 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,25 @@ static void	check(t_scene scene)
 }
 //DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END
 
-static void	minirt_cleanup(t_scene *scene)
-{
-	objlist_clear(&scene->objects);
-}
+// static void	minirt_cleanup(t_scene *scene)
+// {
+// 	objlist_clear(&scene->objects);
+// }
 
 static int	minirt_close(t_scene *scene)
 {
-	minirt_cleanup(scene);
+	(void)scene;
+	// minirt_cleanup(scene);
 	minirt_exit(NULL, EXIT_SUCCESS);
 	return (0);
+}
+
+int    minirt_key(int key, void *data)
+{
+    (void)data;
+    if (key == 53)
+        minirt_close(data);
+    return (0);
 }
 
 int	main(int argc, char **argv)
@@ -112,10 +121,10 @@ int	main(int argc, char **argv)
 	parse_scene(argv[1], &scene);
 	check(scene);//debug
 	img = struct_img(&scene);
-	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, WIDTH, HEIGHT, "miniRT");
 	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
 	mlx_hook(img.win, 17, 0, minirt_close, &scene);
+	mlx_key_hook(img.win, minirt_key, NULL);
+	mlx_loop(img.mlx);
 	minirt_close(&scene);
 }
 
