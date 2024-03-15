@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:17:29 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/13 21:51:24 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:48:57 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "utils.h"
 
 # include <fcntl.h>
-# include <stdbool.h>
 
 void	parse_amblight(char **split, t_amblight *amblight);
 void	parse_camera(char **split, t_camera *camera);
@@ -27,5 +26,7 @@ void	parse_light(char **split, t_objlist **head);
 double	ft_strtod(const char *str, char **endptr);
 size_t	arrlen(char **arr);
 void	checkbadinput(bool last, char *type);
+
+void	range_check(t_scene scene);
 
 #endif

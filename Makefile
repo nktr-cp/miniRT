@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
+#    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/13 22:06:31 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/14 18:55:40 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I libft -I includes #-fsanitize=address
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
@@ -42,7 +42,8 @@ OBJLIST :=	$(addprefix objlist/, $(OBJLIST))
 
 PARSE =		parse.c \
 			parse_util.c \
-			parse_env.c
+			parse_env.c \
+			range_check.c
 PARSE :=	$(addprefix parse/, $(PARSE))
 
 IMG	=		struct_img.c

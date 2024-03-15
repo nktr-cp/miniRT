@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 18:37:36 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:55:45 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define TYPEDEFS_H
 
 # include "objlist.h"
+
+# include <stdbool.h>
 
 # define WIDTH 720
 # define HEIGHT 960
@@ -116,7 +118,8 @@ typedef struct s_mlx
 
 typedef struct s_img
 {
-	// HEIGHT x WIDTHのint型の配列にキャストして使う
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -130,5 +133,14 @@ typedef struct s_data
 	t_img	img;
 	t_scene	scene;
 }	t_data;
+
+typedef struct s_intersection
+{
+	t_vector	coord;
+	t_vector	normal;
+	t_objtype	type;
+	void		*objptr;
+	double		dist;
+}	t_intersection;
 
 #endif

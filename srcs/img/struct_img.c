@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/14 18:52:59 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:02:20 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ t_img	struct_img(t_scene *scene)
 			// カメラの位置を元にrayをつくる
 			ray = generate_ray(scene, i, j);
 			// 最初にぶつかるobjectを判定
-			
 		}
 	}
 	return (img);
