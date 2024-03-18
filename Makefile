@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/15 22:48:37 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/18 17:14:41 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ PARSE =		parse.c \
 PARSE :=	$(addprefix parse/, $(PARSE))
 
 IMG	=		struct_img.c \
-			intersection.c \
+			intersect_plane.c \
+			intersect_sphere.c \
+			intersect_cylinder.c \
 			camera.c
 IMG :=		$(addprefix img/, $(IMG))
 
