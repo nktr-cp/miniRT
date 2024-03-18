@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:09:20 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 19:36:41 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:21:19 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_vector	vector_mult(const t_vector v, double scalar)
 #include <stdio.h>
 void	print_vector(t_vector v)
 {
-	dprintf(1, "x: %f\n", v.x);
-	dprintf(1, "y: %f\n", v.y);
-	dprintf(1, "z: %f\n", v.z);
+	printf("x: %f\n", v.x);
+	printf("y: %f\n", v.y);
+	printf("z: %f\n", v.z);
 }

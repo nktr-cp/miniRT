@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 22:00:47 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:01:09 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "vector.h"
 # include <mlx.h>
 
-void	init_camera(t_camera *camera);
+void			init_camera(t_camera *camera);
 
 t_intersection	intersect_sphere(t_ray ray, t_sphere *sphere);
 t_intersection	intersect_cylinder(t_ray ray, t_cylinder *cylinder);

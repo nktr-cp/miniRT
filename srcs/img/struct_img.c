@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 22:01:17 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:54:55 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_ray	generate_ray(t_scene *scene, const int x, const int y)
 	my = y - HEIGHT * 0.5;
 	xvec = vector_mult(scene->camera.ex, mx);
 	yvec = vector_mult(scene->camera.ey, my);
-	res.direction = normalize(vector_add(scene->camera.origin, vector_add(xvec, yvec)));
+	res.direction = normalize(vector_add(scene->camera.to_center, vector_add(xvec, yvec)));
 	return (res);
 }
 
@@ -76,6 +76,25 @@ t_img	struct_img(t_scene *scene)
 	img.img = mlx_new_image(img.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	init_camera(&scene->camera);
+
+	double max_dist = 0;
+	i = -1;
+	while (++i < WIDTH)
+	{
+		j = -1;
+		while (++j < HEIGHT)
+		{
+			color.r = color.g = color.b = 0;
+			// カメラの位置を元にrayをつくる
+			ray = generate_ray(scene, i, j);
+			// 最初にぶつかるobjectを判定
+			it = find_nearest_object(ray, scene);
+			if (it.dist != INF)
+				max_dist = fmax(max_dist, it.dist);
+		}
+	}
+
+
 	i = -1;
 	while (++i < WIDTH)
 	{
@@ -89,9 +108,9 @@ t_img	struct_img(t_scene *scene)
 			it = find_nearest_object(ray, scene);
 			if (it.dist != INF)
 			{
-				color.r = 255;	
+				// printf("%f\n", it.dist);
+				color.r = color.b = 255 * it.dist / max_dist;
 			}
-			color.b = 255;
 			put_color_pixel(&img, i, j, color);
 		}
 	}
