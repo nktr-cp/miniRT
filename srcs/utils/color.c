@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:14:51 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 19:35:35 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:50:45 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int	color_to_int(t_color color)
+unsigned int	color_to_uint(t_color color)
 {
-	return (color.r << 16 | color.g << 8 | color.b);
+	return ((unsigned int)(color.r << 16 | color.g << 8 | color.b));
 }
 
 t_color	color_product(t_color c1, t_color c2)

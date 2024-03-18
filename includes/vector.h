@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:09:42 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/15 19:35:17 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:43:00 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_vector	make_vector(double x, double y, double z);
 t_vector	vector_add(const t_vector v1, const t_vector v2);
 t_vector	vector_sub(const t_vector v1, const t_vector v2);
 t_vector	vector_mult(const t_vector v, double scalar);
-void		print_vector(t_vector v);
 
 t_vector	cross(const t_vector v1, const t_vector v2);
 double		norm(const t_vector v);

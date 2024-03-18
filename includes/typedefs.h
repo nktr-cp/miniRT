@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/18 16:01:22 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:28:32 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define HEIGHT 960
 
 # define INF 1e15
-# define EPS 1e-6
+# define EPS 1e-4
 
 typedef struct s_vector
 {
