@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:04:12 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/14 18:30:33 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:23:20 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static bool	vectorisinrange(t_vector vector)
 		return (false);
 	if (vector.z < -1 || vector.z > 1)
 		return (false);
+	if (vector.x == 0 && vector.y == 0 && vector.z == 0)
+		return (false);
 	return (true);
 }
 
@@ -39,7 +41,7 @@ static bool	ratioisinrange(double ratio)
 	return (ratio >= 0 && ratio <= 1);
 }
 
-static bool	objconfisinrange(t_objlist *head)
+static t_objtype	objconfisinrange(t_objlist *head)
 {
 	bool	isinrange;
 
@@ -58,9 +60,9 @@ static bool	objconfisinrange(t_objlist *head)
 					&& colorisinrange(((t_cylinder *)head->obj)->color));
 		head = head->next;
 		if (!isinrange)
-			return (false);
+			return (head->type);
 	}
-	return (true);
+	return (VOID);
 }
 
 void	range_check(t_scene scene)
@@ -73,7 +75,15 @@ void	range_check(t_scene scene)
 		minirt_exit("Camera direction out of range", EXIT_FAILURE);
 	if (scene.camera.fov < 0 || scene.camera.fov > 180)
 		minirt_exit("Camera FOV out of range", EXIT_FAILURE);
-	if (!objconfisinrange(scene.objects))
-		minirt_exit("More than one object configuration out of range",
-			EXIT_FAILURE);
+	if (objconfisinrange(scene.objects) != VOID)
+	{
+		if (objconfisinrange(scene.objects) == SPHERE)
+			minirt_exit("Sphere configuration out of range", EXIT_FAILURE);
+		if (objconfisinrange(scene.objects) == LIGHT)
+			minirt_exit("Light configuration out of range", EXIT_FAILURE);
+		if (objconfisinrange(scene.objects) == PLANE)
+			minirt_exit("Plane configuration out of range", EXIT_FAILURE);
+		if (objconfisinrange(scene.objects) == CYLINDER)
+			minirt_exit("Cylinder configuration out of range", EXIT_FAILURE);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 19:09:03 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:10:56 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	parse_cylinder(char **split, t_objlist **head)
 	objlist_add(head, cylinder, CYLINDER);
 }
 
-static void	parse_line(char **split, t_scene *scene)
+static void	parse_line(char **split, t_scene *scene, size_t i)
 {
 	if (ft_strcmp(split[0], "sp") == 0)
 		parse_sphere(split, &scene->objects);
@@ -107,7 +107,7 @@ static void	parse_line(char **split, t_scene *scene)
 	else
 	{
 		free_split(split);
-		minirt_exit("Invalid line", EXIT_FAILURE);
+		minirt_lineerror("Undefined identifier", i);
 	}
 	free_split(split);
 }
@@ -117,21 +117,24 @@ void	parse_scene(const char *filename, t_scene *scene)
 	int		fd;
 	char	*line;
 	char	**split;
+	size_t	i;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		minirt_exit("Failed to open file", EXIT_FAILURE);
+	i = 1;
 	while (true)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		split = ft_split(line, ' ');
-		checkbadinput(false, split[0]);
 		if (split == NULL)
 			minirt_exit("malloc failed", EXIT_FAILURE);
-		parse_line(split, scene);
+		checkbadinput(false, split[0]);
+		parse_line(split, scene, i);
 		free(line);
+		i++;
 	}
 	checkbadinput(true, NULL);
 	range_check(*scene);

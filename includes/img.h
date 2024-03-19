@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/18 16:01:09 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/20 04:51:01 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ t_intersection	intersect_plane(t_ray ray, t_plane *plane);
 t_img			struct_img(t_scene *scene);
 t_intersection	find_nearest_object(t_ray ray, t_scene *scene);
 
-# define EPSILON 0.0001
+t_color			whatcolorisit(t_ray ray, t_scene *scene);
+
+//debug
+# define GREEN (t_color){60, 120, 60}
+# define BLACK (t_color){0, 0, 0}
 
 #endif // IMG_H

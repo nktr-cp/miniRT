@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/18 17:41:46 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/20 01:42:54 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,16 @@ t_img	struct_img(t_scene *scene)
 			it = find_nearest_object(ray, scene);
 			if (it.dist != INF)
 			{
-				int	val = (1<<24) * it.dist / max_dist;
-				color.b = (val >> 16) % 255;
-				color.g = (val >> 8) % 255;
-				color.r = val % 255;
+				// int	val = (1<<24) * it.dist / max_dist;
+				// color.b = (val >> 16) % 255;
+				// color.g = (val >> 8) % 255;
+				// color.r = val % 255;
 				// color.r = color.g = 255 * it.dist / max_dist;
+				color = whatcolorisit(ray, scene);
+				put_color_pixel(&img, i, j, color);
 			}
-			put_color_pixel(&img, i, j, color);
+			else
+				put_color_pixel(&img, i, j, BLACK);
 		}
 	}
 	return (img);
