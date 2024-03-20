@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
+#    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/21 03:48:32 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/21 04:38:57 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address,undefined
+CFLAGS = -Wall -Wextra -Werror -I libft -I includes #-fsanitize=address,undefined
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
@@ -106,7 +106,6 @@ fclean: clean
 	@$(RM) $(LIBFT)
 	@$(RM) $(MLX)
 	@make -C libft fclean
-	@make -C minilibx clean
 	@printf "$(RED)Removed $(NAME)$(RESET)\n"
 
 re: fclean all
