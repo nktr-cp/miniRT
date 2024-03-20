@@ -6,11 +6,11 @@
 #    By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/20 00:14:09 by misargsy         ###   ########.fr        #
+#    Updated: 2024/03/21 00:06:51 by misargsy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I libft -I includes -fsanitize=address,undefined
 MLXF = -framework OpenGL -framework AppKit
 
 NAME = miniRT
@@ -51,7 +51,8 @@ IMG	=		struct_img.c \
 			intersect_sphere.c \
 			intersect_cylinder.c \
 			camera.c \
-			tracing.c
+			tracing.c \
+			getcolor.c
 IMG :=		$(addprefix img/, $(IMG))
 
 VECTOR =	basic_ops.c \

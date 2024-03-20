@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 16:22:07 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/20 22:00:06 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,21 @@ t_img	struct_img(t_scene *scene)
 	img.img = mlx_new_image(img.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	init_camera(&scene->camera);
-
 	i = -1;
 	while (++i < WIDTH)
 	{
 		j = -1;
 		while (++j < HEIGHT)
 		{
-			color = BLACK;
+			color.r = color.g = color.b = 0;
+			// カメラの位置を元にrayをつくる
 			ray = generate_ray(scene, i, j);
+			// 最初にぶつかるobjectを判定
 			it = find_nearest_object(ray, scene);
 			if (it.dist != INF)
+			{
 				color = whatcolorisit(ray, scene);
+			}
 			put_color_pixel(&img, i, j, color);
 		}
 	}
