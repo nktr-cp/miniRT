@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:25:06 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 23:51:59 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 01:28:09 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,23 @@ void	init_camera(t_camera *camera)
 	dist = WIDTH / (2.0 * tan(deg_to_rad(camera->fov) * 0.5));
 	camera->to_center = vector_mult(camera->direction, dist);
 	camera->direction = normalize(camera->direction);
-	if (fabs(camera->origin.x) < EPS
-		&& fabs(camera->origin.y) > EPS && fabs(camera->origin.z) < EPS)
+	if (fabs(camera->direction.x) < EPS
+		&& fabs(camera->direction.y) > EPS && fabs(camera->direction.z) < EPS)
 	{
-		camera->ex = make_vector(-1, 0, 0);
-		camera->ey = make_vector(0, 0, -1);
+		camera->ex = make_vector(1, 0, 0);
 		if (camera->origin.y > 0)
-		{
 			camera->ex.x *= -1;
-			camera->ey.z *= -1;
-		}
-		return ;
 	}
-	camera->ex.x = camera->to_center.z
-		/ sqrt(camera->to_center.x * camera->to_center.x
-			+ camera->to_center.z * camera->to_center.z);
-	camera->ex.y = 0;
-	camera->ex.z = -camera->to_center.x
-		/ sqrt(camera->to_center.x * camera->to_center.x
-			+ camera->to_center.z * camera->to_center.z);
-	camera->ex = normalize(camera->ex);
+	else
+	{
+		camera->ex.x = camera->to_center.z
+			/ sqrt(camera->to_center.x * camera->to_center.x
+				+ camera->to_center.z * camera->to_center.z);
+		camera->ex.y = 0;
+		camera->ex.z = -camera->to_center.x
+			/ sqrt(camera->to_center.x * camera->to_center.x
+				+ camera->to_center.z * camera->to_center.z);
+		camera->ex = normalize(camera->ex);
+	}
 	camera->ey = normalize(cross(camera->ex, camera->to_center));
 }
