@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:45:31 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:10:35 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static t_color	raytracer(t_ray ray, t_scene *scene)
 	if (inter.dist == INF)
 		return (color);
 	objcolor = get_color(inter.objptr, inter.type);
-	color = (t_color){0, 60, 144};
+	color = (t_color){0, 0, 0};
 	while (true)
 	{
 		light = get_next_light(scene->objects);
