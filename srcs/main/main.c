@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/18 17:45:28 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:04:16 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,12 @@ static int	minirt_close(t_scene *scene)
 	return (0);
 }
 
-int    minirt_key(int key, void *data)
+int	minirt_key(int key, void *data)
 {
-    (void)data;
-    if (key == 53)
-        minirt_close(data);
-    return (0);
+	(void)data;
+	if (key == 53)
+		minirt_close(data);
+	return (0);
 }
 
 int	main(int argc, char **argv)

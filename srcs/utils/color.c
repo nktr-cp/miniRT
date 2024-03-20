@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:14:51 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 02:44:07 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:16:12 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ t_color	color_product(t_color c1, t_color c2)
 	res.r = c1.r * c2.r;
 	res.g = c1.g * c2.g;
 	res.b = c1.b * c2.b;
+	res.r /= (255);
+	res.g /= (255);
+	res.b /= (255);
 	return (trim_rgb(res));
 }
 
-t_color	color_sum(t_color c1, t_color c2)//might not use
+t_color	color_sum(t_color c1, t_color c2)
 {
 	t_color	res;
 

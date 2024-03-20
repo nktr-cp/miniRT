@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tracing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:45:31 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/20 15:58:34 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:12:03 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,14 @@ static t_color	raytracer(t_ray ray, t_scene *scene)
 	t_color			color;
 	t_light			*light;
 	double			angle;
+	t_color			objcolor;
 
 	ft_bzero(&color, sizeof(t_color));
 	inter = find_nearest_object(ray, scene);
 	if (inter.dist == INF)
 		return (color);
-	color = get_color(inter.objptr, inter.type);
+	objcolor = get_color(inter.objptr, inter.type);
+	color = BLACK;
 	while (true)
 	{
 		/*
@@ -107,8 +109,10 @@ static t_color	raytracer(t_ray ray, t_scene *scene)
 		angle = fmax(prod(inter.normal,
 					normalize(vector_sub(light->origin, inter.coord))), 0);
 		if (!isshaded(inter, *light, scene))
-			color = color_sum(color, color_scalar(color_product(color, light->color), angle));
+			color = color_sum(color,
+					get_diffused_color(angle, objcolor, light));
 	}
+	color = color_sum(color, get_ambient_color(objcolor, &scene->amblight));
 	return (color);
 }
 
@@ -117,6 +121,5 @@ t_color	whatcolorisit(t_ray ray, t_scene *scene)
 	t_color	color;
 
 	color = raytracer(ray, scene);
-	color = color_sum(color, color_scalar(scene->amblight.color, scene->amblight.ratio));
 	return (color);
 }

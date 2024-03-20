@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 15:57:58 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/20 23:48:51 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_intersection	intersect_plane(t_ray ray, t_plane *plane);
 t_img			struct_img(t_scene *scene);
 t_intersection	find_nearest_object(t_ray ray, t_scene *scene);
 
+t_color			get_diffused_color(double cosine, t_color objectcolor, t_light *light);
+t_color			get_ambient_color(t_color objectcolor, t_amblight *light);
 t_color			whatcolorisit(t_ray ray, t_scene *scene);
 
 //debug
