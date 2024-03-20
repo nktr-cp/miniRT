@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/09 19:08:43 by misargsy          #+#    #+#              #
-#    Updated: 2024/03/21 00:29:38 by knishiok         ###   ########.fr        #
+#    Updated: 2024/03/21 03:48:32 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,18 +46,20 @@ PARSE =		parse.c \
 			range_check.c
 PARSE :=	$(addprefix parse/, $(PARSE))
 
-IMG	=		struct_img.c \
+RENDER	=		render.c \
+			intersection.c \
 			intersect_plane.c \
 			intersect_sphere.c \
 			intersect_cylinder.c \
 			camera.c \
 			tracing.c \
-			getcolor.c
-IMG :=		$(addprefix img/, $(IMG))
+			getcolor.c \
+			mlx_ops.c
+RENDER :=		$(addprefix render/, $(RENDER))
 
 VECTOR =	basic_ops.c \
 			cross.c \
-			prod.c \
+			dot.c \
 			norm.c \
 			normalize.c
 VECTOR :=	$(addprefix vector/, $(VECTOR))
@@ -68,7 +70,7 @@ UTILS =		exit.c \
 UTILS :=	$(addprefix utils/, $(UTILS))
 ##############################################################################
 
-SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(IMG) $(VECTOR) $(UTILS)
+SRCS =	$(MAIN) $(OBJLIST) $(PARSE) $(RENDER) $(VECTOR) $(UTILS)
 SRCS :=	$(addprefix $(SRCSDIR)/, $(SRCS))
 OBJS =	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 

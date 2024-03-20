@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 00:33:30 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:25:55 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_ray
 typedef struct s_sphere
 {
 	t_vector	center;
-	double		diameter;
+	double		radius;
 	t_color		color;
 }	t_sphere;
 
@@ -61,7 +61,7 @@ typedef struct s_cylinder
 {
 	t_vector	origin;
 	t_vector	normal;
-	double		diameter;
+	double		radius;
 	double		height;
 	t_color		color;
 }	t_cylinder;

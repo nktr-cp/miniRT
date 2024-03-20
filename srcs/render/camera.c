@@ -6,11 +6,11 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:25:06 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/21 01:28:09 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "img.h"
+#include "render.h"
 
 static double	deg_to_rad(double deg)
 {

@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   getcolor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:24:27 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 00:18:50 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "img.h"
+#include "render.h"
 
 t_color	get_diffused_color(double cosine, t_color objectcolor, t_light *light)
 {
 	t_color	diffused;
 
-	diffused = color_scalar(color_product(objectcolor, light->color), cosine * light->brightness);
+	diffused = color_scalar(color_product(objectcolor, light->color),
+			cosine * light->brightness);
 	return (diffused);
 }
 

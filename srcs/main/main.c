@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 00:04:16 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:48:19 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "utils.h"
-#include "img.h"
+#include "render.h"
 #include "mlx.h"
 
 //DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START DEBUG START
@@ -30,9 +30,9 @@ static void	print_objlist(t_objlist *list)
 		{
 			t_sphere	*sphere = (t_sphere *)tmp->obj;
 			printf("Sphere\n");
-			printf("center: %f %f %f, diameter: %f, color: %d %d %d\n",
+			printf("center: %f %f %f, radius: %f, color: %d %d %d\n",
 				sphere->center.x, sphere->center.y, sphere->center.z,
-				sphere->diameter, sphere->color.r, sphere->color.g, sphere->color.b);
+				sphere->radius, sphere->color.r, sphere->color.g, sphere->color.b);
 		}
 		if (type == LIGHT)
 		{
@@ -55,10 +55,10 @@ static void	print_objlist(t_objlist *list)
 		{
 			t_cylinder	*cylinder = (t_cylinder *)tmp->obj;
 			printf("Cylinder\n");
-			printf("origin: %f %f %f, normal: %f %f %f, diameter: %f, height: %f, color: %d %d %d\n",
+			printf("origin: %f %f %f, normal: %f %f %f, radius: %f, height: %f, color: %d %d %d\n",
 				cylinder->origin.x, cylinder->origin.y, cylinder->origin.z,
 				cylinder->normal.x, cylinder->normal.y, cylinder->normal.z,
-				cylinder->diameter, cylinder->height,
+				cylinder->radius, cylinder->height,
 				cylinder->color.r, cylinder->color.g, cylinder->color.b);
 		}
 		tmp = tmp->next;
@@ -94,37 +94,16 @@ static void	check(t_scene scene)
 // 	objlist_clear(&scene->objects);
 // }
 
-static int	minirt_close(t_scene *scene)
-{
-	(void)scene;
-	// minirt_cleanup(scene);
-	minirt_exit(NULL, EXIT_SUCCESS);
-	return (0);
-}
-
-int	minirt_key(int key, void *data)
-{
-	(void)data;
-	if (key == 53)
-		minirt_close(data);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_scene	scene;
-	t_img	img;
 
 	if (argc != 2)
 		minirt_exit("Invalid arguments", EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
 	parse_scene(argv[1], &scene);
 	check(scene);//debug
-	img = struct_img(&scene);
-	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
-	mlx_hook(img.win, 17, 0, minirt_close, &scene);
-	mlx_key_hook(img.win, minirt_key, NULL);
-	mlx_loop(img.mlx);
+	render(&scene);
 	minirt_close(&scene);
 }
 

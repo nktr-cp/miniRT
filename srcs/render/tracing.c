@@ -6,11 +6,11 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:45:31 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 00:29:54 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "img.h"
+#include "render.h"
 
 static t_color	get_color(void *obj, t_objtype type)
 {
@@ -33,12 +33,6 @@ bool	isshaded(t_intersection inter, t_light light, t_scene *scene)
 	double			dlight;
 	double			dobj;
 
-	/*
-	- Set up shadow ray
-	- Check if the shadow ray intersects with any object
-	- Only when it does, check if there is an object between the intersection point and the light source
-	- If there is, the point is shaded
-	*/
 	shadowray.origin = vector_add(inter.coord, vector_mult(inter.normal, EPS));
 	shadowray.direction = normalize(vector_sub(light.origin, shadowray.origin));
 	dlight = norm(vector_sub(light.origin, shadowray.origin));
@@ -93,20 +87,13 @@ static t_color	raytracer(t_ray ray, t_scene *scene)
 	if (inter.dist == INF)
 		return (color);
 	objcolor = get_color(inter.objptr, inter.type);
-	color = BLACK;
+	color = (t_color){0, 60, 144};
 	while (true)
 	{
-		/*
-		For each light source in the scene,
-		- calculate the diffuse light
-		- nullify the color if the point is shaded
-		
-		After the loop, apply the ambient light modifier
-		*/
 		light = get_next_light(scene->objects);
 		if (light == NULL)
 			break ;
-		angle = fmax(prod(inter.normal,
+		angle = fmax(dot(inter.normal,
 					normalize(vector_sub(light->origin, inter.coord))), 0);
 		if (!isshaded(inter, *light, scene))
 			color = color_sum(color,

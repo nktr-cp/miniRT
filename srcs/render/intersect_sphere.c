@@ -6,11 +6,11 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:13:31 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 23:33:18 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "img.h"
+#include "render.h"
 
 static bool	choose_dist(double k[2], double *dist)
 {
@@ -36,15 +36,12 @@ t_intersection	intersect_sphere(t_ray ray, t_sphere *sphere)
 	res.objptr = sphere;
 	res.type = SPHERE;
 	abc[0] = 1.0;
-	abc[1] = 2 * prod(vector_sub(ray.origin, sphere->center), ray.direction);
+	abc[1] = 2 * dot(vector_sub(ray.origin, sphere->center), ray.direction);
 	abc[2] = pow(norm(vector_sub(ray.origin, sphere->center)), 2)
-		- pow(sphere->diameter, 2);
+		- pow(sphere->radius, 2);
 	d = abc[1] * abc[1] - 4 * abc[2];
 	if (d < 0)
-	{
-		// printf("%f %f %f\n", abc[0], abc[1], abc[2]);
 		return (res);
-	}
 	k[0] = (-abc[1] + pow(d, 0.5)) * 0.5;
 	k[1] = (-abc[1] - pow(d, 0.5)) * 0.5;
 	if (!choose_dist(k, &res.dist))

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/20 23:14:47 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 03:26:16 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static void	parse_sphere(char **split, t_objlist **head)
 	sphere->center.x = ft_strtod(split[1], &endptr);
 	sphere->center.y = ft_strtod(endptr + 1, &endptr);
 	sphere->center.z = ft_strtod(endptr + 1, &endptr);
-	sphere->diameter = ft_strtod(split[2], &endptr);
-	sphere->diameter *= 0.5; // modified
+	sphere->radius = ft_strtod(split[2], &endptr) * 0.5;
 	sphere->color.r = ft_atoi(split[3]);
 	i = 0;
 	while (ft_isdigit(split[3][i]) == 1)
@@ -78,8 +77,7 @@ static void	parse_cylinder(char **split, t_objlist **head)
 	cylinder->normal.x = ft_strtod(split[2], &endptr);
 	cylinder->normal.y = ft_strtod(endptr + 1, &endptr);
 	cylinder->normal.z = ft_strtod(endptr + 1, &endptr);
-	cylinder->diameter = ft_strtod(split[3], &endptr);
-	cylinder->diameter *= 0.5; // modified
+	cylinder->radius = ft_strtod(split[3], &endptr) * 0.5;
 	cylinder->height = ft_strtod(split[4], &endptr);
 	cylinder->color.r = ft_atoi(split[5]);
 	i = 0;
