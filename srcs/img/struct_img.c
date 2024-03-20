@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 01:42:54 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:22:07 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,26 @@ t_ray	generate_ray(t_scene *scene, const int x, const int y)
 
 void	judge_intersect(t_ray ray, t_intersection *mx, t_objlist *lst)
 {
-	if (lst->type == SPHERE && mx->dist
-		> intersect_sphere(ray, lst->obj).dist)
-		*mx = intersect_sphere(ray, lst->obj);
-	else if (lst->type == CYLINDER && mx->dist
-		> intersect_cylinder(ray, lst->obj).dist)
-		*mx = intersect_cylinder(ray, lst->obj);
-	else if (lst->type == PLANE && mx->dist
-		> intersect_plane(ray, lst->obj).dist)
-		*mx = intersect_plane(ray, lst->obj);
+	t_intersection	inter;
+
+	if (lst->type == SPHERE)
+	{
+		inter = intersect_sphere(ray, lst->obj);
+		if (mx->dist > inter.dist)
+			*mx = inter;
+	}
+	else if (lst->type == CYLINDER)
+	{
+		inter = intersect_cylinder(ray, lst->obj);
+		if (mx->dist > inter.dist)
+			*mx = inter;
+	}
+	else if (lst->type == PLANE)
+	{
+		inter = intersect_plane(ray, lst->obj);
+		if (mx->dist > inter.dist)
+			*mx = inter;
+	}
 }
 
 t_intersection	find_nearest_object(t_ray ray, t_scene *scene)
@@ -83,43 +94,18 @@ t_img	struct_img(t_scene *scene)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	init_camera(&scene->camera);
 
-	double	max_dist = 0;
 	i = -1;
 	while (++i < WIDTH)
 	{
 		j = -1;
 		while (++j < HEIGHT)
 		{
+			color = BLACK;
 			ray = generate_ray(scene, i, j);
 			it = find_nearest_object(ray, scene);
 			if (it.dist != INF)
-				max_dist = fmax(max_dist, it.dist);
-		}
-	}
-
-	i = -1;
-	while (++i < WIDTH)
-	{
-		j = -1;
-		while (++j < HEIGHT)
-		{
-			color.r = color.g = color.b = 0;
-			// カメラの位置を元にrayをつくる
-			ray = generate_ray(scene, i, j);
-			// 最初にぶつかるobjectを判定
-			it = find_nearest_object(ray, scene);
-			if (it.dist != INF)
-			{
-				// int	val = (1<<24) * it.dist / max_dist;
-				// color.b = (val >> 16) % 255;
-				// color.g = (val >> 8) % 255;
-				// color.r = val % 255;
-				// color.r = color.g = 255 * it.dist / max_dist;
 				color = whatcolorisit(ray, scene);
-				put_color_pixel(&img, i, j, color);
-			}
-			else
-				put_color_pixel(&img, i, j, BLACK);
+			put_color_pixel(&img, i, j, color);
 		}
 	}
 	return (img);

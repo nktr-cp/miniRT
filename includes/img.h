@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 04:51:01 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:57:58 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <assert.h>
 
 # include <math.h>
+# include <mlx.h>
 # include "typedefs.h"
 # include "utils.h"
 # include "vector.h"
-# include <mlx.h>
 
 void			init_camera(t_camera *camera);
 
