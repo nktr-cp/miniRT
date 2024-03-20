@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:10 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 03:48:19 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:19:33 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,6 @@ static void	check(t_scene scene)
 }
 //DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END DEBUG END
 
-// static void	minirt_cleanup(t_scene *scene)
-// {
-// 	objlist_clear(&scene->objects);
-// }
-
 int	main(int argc, char **argv)
 {
 	t_scene	scene;
@@ -107,8 +102,8 @@ int	main(int argc, char **argv)
 	minirt_close(&scene);
 }
 
-// __attribute__((destructor))
-// static void	leaks(void)
-// {
-// 	system("leaks -q miniRT");
-// }
+__attribute__((destructor))
+static void	leaks(void)
+{
+	system("leaks -q miniRT");
+}

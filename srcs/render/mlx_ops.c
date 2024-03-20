@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_ops.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 03:37:10 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:19:28 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	mlx_setup(t_img *img)
 int	minirt_close(t_scene *scene)
 {
 	(void)scene;
-	// minirt_cleanup(scene);
 	minirt_exit(NULL, EXIT_SUCCESS);
 	return (0);
 }

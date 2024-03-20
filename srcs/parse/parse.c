@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 03:26:16 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 04:32:42 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,16 @@ static void	parse_cylinder(char **split, t_objlist **head)
 
 static void	parse_line(char **split, t_scene *scene, size_t i)
 {
+	if (split[0] == NULL || split[0][0] == '\n')
+	{
+		free_split(split);
+		return ;
+	}
+	if (split[arrlen(split) - 1][0] == '\n')
+	{
+		free(split[arrlen(split) - 1]);
+		split[arrlen(split) - 1] = NULL;
+	}
 	if (ft_strcmp(split[0], "sp") == 0)
 		parse_sphere(split, &scene->objects);
 	else if (ft_strcmp(split[0], "pl") == 0)
@@ -105,10 +115,7 @@ static void	parse_line(char **split, t_scene *scene, size_t i)
 	else if (ft_strcmp(split[0], "L") == 0)
 		parse_light(split, &scene->objects);
 	else
-	{
-		free_split(split);
 		minirt_lineerror("Undefined identifier", i);
-	}
 	free_split(split);
 }
 
