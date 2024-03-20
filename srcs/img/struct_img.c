@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:41:34 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 22:00:06 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:34:04 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ t_img	struct_img(t_scene *scene)
 		j = -1;
 		while (++j < HEIGHT)
 		{
-			color.r = color.g = color.b = 0;
-			// カメラの位置を元にrayをつくる
+			color = RED;
 			ray = generate_ray(scene, i, j);
 			// 最初にぶつかるobjectを判定
 			it = find_nearest_object(ray, scene);

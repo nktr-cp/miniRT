@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:19:19 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/20 04:51:42 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:33:30 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 
 # define INF 1e15
 # define EPS 1e-4
-
-# define AMBIENT_REFLECTION_FACTOR 0.01
-# define DIFFUSE_REFLECTION_FACTOR 0.8
 
 typedef struct s_vector
 {

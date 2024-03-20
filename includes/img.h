@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:43:21 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/20 23:48:51 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:33:56 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_color			whatcolorisit(t_ray ray, t_scene *scene);
 //debug
 # define GREEN (t_color){60, 120, 60}
 # define BLACK (t_color){0, 0, 0}
+# define RED (t_color){120, 60, 60}
 
 #endif // IMG_H
