@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:54:28 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/21 04:32:42 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:58:57 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	parse_plane(char **split, t_objlist **head)
 	while (ft_isdigit(split[3][i]) == 1)
 		i++;
 	plane->color.b = ft_atoi(split[3] + ++i);
+	plane->normal = normalize(plane->normal);
 	objlist_add(head, plane, PLANE);
 }
 
@@ -87,6 +88,7 @@ static void	parse_cylinder(char **split, t_objlist **head)
 	while (ft_isdigit(split[5][i]) == 1)
 		i++;
 	cylinder->color.b = ft_atoi(split[5] + ++i);
+	cylinder->normal = normalize(cylinder->normal);
 	objlist_add(head, cylinder, CYLINDER);
 }
 
