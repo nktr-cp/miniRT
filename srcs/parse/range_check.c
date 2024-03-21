@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   range_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:04:12 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 22:23:20 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/22 00:15:27 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static t_objtype	objconfisinrange(t_objlist *head)
 		if (head->type == CYLINDER)
 			isinrange = (vectorisinrange(((t_cylinder *)head->obj)->normal)
 					&& colorisinrange(((t_cylinder *)head->obj)->color));
-		head = head->next;
 		if (!isinrange)
 			return (head->type);
+		head = head->next;
 	}
 	return (VOID);
 }

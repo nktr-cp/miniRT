@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:25:06 by knishiok          #+#    #+#             */
-/*   Updated: 2024/03/21 03:47:06 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:55:01 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ void	init_camera(t_camera *camera)
 
 	dist = WIDTH / (2.0 * tan(deg_to_rad(camera->fov) * 0.5));
 	camera->to_center = vector_mult(camera->direction, dist);
-	camera->direction = normalize(camera->direction);
 	if (fabs(camera->direction.x) < EPS
 		&& fabs(camera->direction.y) > EPS && fabs(camera->direction.z) < EPS)
 	{
 		camera->ex = make_vector(1, 0, 0);
 		if (camera->origin.y > 0)
-			camera->ex.x *= -1;
+			camera->ex.x = -1;
 	}
 	else
 	{
