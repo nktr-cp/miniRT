@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
+/*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:03:44 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 19:13:46 by knishiok         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:57:42 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	parse_camera(char **split, t_camera *camera)
 	camera->direction.y = ft_strtod(endptr + 1, &endptr);
 	camera->direction.z = ft_strtod(endptr + 1, &endptr);
 	camera->fov = ft_strtod(split[3], &endptr);
+	camera->direction = normalize(camera->direction);
 }
 
 void	parse_light(char **split, t_objlist **head)

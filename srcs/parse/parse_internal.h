@@ -6,7 +6,7 @@
 /*   By: misargsy <misargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:17:29 by misargsy          #+#    #+#             */
-/*   Updated: 2024/03/15 18:48:57 by misargsy         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:56:04 by misargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "typedefs.h"
 # include "utils.h"
+# include "vector.h"
 
 # include <fcntl.h>
 
